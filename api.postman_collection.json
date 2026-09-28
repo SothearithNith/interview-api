@@ -1,0 +1,116 @@
+{
+  "info": {
+    "_postman_id": "51a5a955-2b59-4dcd-89ac-261d755abac4",
+    "name": "api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57249032",
+    "_collection_link": "https://go.postman.co/collection/57249032-51a5a955-2b59-4dcd-89ac-261d755abac4?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "transaction",
+      "item": [
+        {
+          "name": "get",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/transactions",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "transactions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "post",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"reference\": \"TXN-003\",\r\n    \"amount\": 100.00,\r\n    \"currency\": \"USD\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/transactions",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "transactions"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "generate-signatureck",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"reference\": \"TXN-003\",\r\n    \"event\": \"payment.completed\",\r\n    \"status\": \"success\",\r\n    \"signature\": \"temporary\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/api/callbacks/generate-signature",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "callbacks",
+            "generate-signature"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "callback",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"reference\": \"TXN-003\",\r\n    \"event\": \"payment.completed\",\r\n    \"status\": \"success\",\r\n    \"signature\": \"f2296e21b11b9951e41a180244324c7b297e1a66e29186c26213d4e7524f373e\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/api/callbacks",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "callbacks"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
